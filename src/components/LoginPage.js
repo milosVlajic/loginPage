@@ -15,12 +15,13 @@ import {
 import TextField from "@mui/material/TextField";
 import { border } from "@mui/system";
 import SaveIcon from "@mui/icons-material/Save";
+import HomePage from "./HomePage";
 
 const LoginPage = () => {
   const [checked, setChecked] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
 
   const emailChangeHandler = (e) => {
     setEmail(e.target.value);
@@ -108,7 +109,7 @@ const LoginPage = () => {
           </Card>
         </form>
       )}
-      {login && <h1 style={{ color: "black" }}>Ovo je Login</h1>}
+      {login && <HomePage />}
     </>
   );
 };
