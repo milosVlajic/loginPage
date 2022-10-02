@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Card from "@mui/material/Card";
-import LockPersonIcon from "@mui/icons-material/LockPerson";
-import "@fontsource/roboto/400.css";
+import React, { useState } from 'react';
+import Card from '@mui/material/Card';
+import LockPersonIcon from '@mui/icons-material/LockPerson';
+import '@fontsource/roboto/400.css';
 import {
   Link,
   Avatar,
@@ -11,36 +11,36 @@ import {
   FormControlLabel,
   FormGroup,
   Typography,
-} from "@mui/material";
-import TextField from "@mui/material/TextField";
-import { border } from "@mui/system";
-import SaveIcon from "@mui/icons-material/Save";
-import HomePage from "./HomePage";
+} from '@mui/material';
+import TextField from '@mui/material/TextField';
+import { border } from '@mui/system';
+import SaveIcon from '@mui/icons-material/Save';
+import HomePage from './HomePage';
 
 const LoginPage = () => {
   const [checked, setChecked] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [login, setLogin] = useState(true);
 
-  const emailChangeHandler = (e) => {
+  const emailChangeHandler = e => {
     setEmail(e.target.value);
     console.log(email);
   };
-  const passwordChangeHandler = (e) => {
+  const passwordChangeHandler = e => {
     setPassword(e.target.value);
     console.log(password);
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = e => {
     e.preventDefault();
     if (email && password) {
       setLogin(true);
     }
   };
 
-  const cardStyle = { height: "70vh", boxShadow: "5px 5px" };
-  const textField = { margin: "20px 0" };
+  const cardStyle = { height: '70vh', boxShadow: '5px 5px' };
+  const textField = { margin: '20px 0' };
 
   return (
     <>
@@ -49,7 +49,7 @@ const LoginPage = () => {
           <Card sx={{ minWidth: 250 }} variant="outlined" style={cardStyle}>
             <CardContent>
               <div align="center">
-                <Avatar style={{ backgroundColor: "green" }}>
+                <Avatar style={{ backgroundColor: 'green' }}>
                   <LockPersonIcon fontSize="large" />
                 </Avatar>
               </div>
@@ -82,7 +82,7 @@ const LoginPage = () => {
                   control={
                     <Checkbox
                       label="Remember me"
-                      onChange={(e) => setChecked(e.target.value)}
+                      onChange={e => setChecked(e.target.value)}
                     />
                   }
                   label="Remember me"
@@ -93,7 +93,7 @@ const LoginPage = () => {
                 size="large"
                 type="submit"
                 fullWidth
-                style={{ margin: "15px 0" }}
+                style={{ margin: '15px 0' }}
               >
                 SIGN UP
               </Button>
@@ -101,7 +101,7 @@ const LoginPage = () => {
                 <Link href="#">Forgot password?</Link>
               </Typography>
               <Typography align="left">
-                {" "}
+                {' '}
                 Don't have an account?
                 <Link href="#"> Sign up</Link>
               </Typography>

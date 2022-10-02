@@ -1,10 +1,12 @@
-import React from "react";
-import NavBar from "./NavBar";
+import React from 'react';
+import MainContent from './MainContent';
+import NavBar from './NavBar';
 
 const HomePage = () => {
   return (
     <>
       <NavBar />
+      <MainContent />
     </>
   );
 };
