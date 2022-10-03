@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-import LockPersonIcon from '@material-ui/icons/LockPerson';
+import LockIcon from '@material-ui/icons/Lock';
+import Card from '@material-ui/core/Card';
 
 import {
   Link,
@@ -21,7 +22,7 @@ const LoginPage = () => {
   const [checked, setChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState(true);
 
   const emailChangeHandler = e => {
     setEmail(e.target.value);
@@ -50,7 +51,7 @@ const LoginPage = () => {
             <CardContent>
               <div align="center">
                 <Avatar style={{ backgroundColor: 'green' }}>
-                  <LockPersonIcon fontSize="large" />
+                  <LockIcon fontSize="large" />
                 </Avatar>
               </div>
 

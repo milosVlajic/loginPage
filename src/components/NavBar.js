@@ -5,30 +5,60 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
-import ElectricCarIcon from '@material-ui/icons//ElectricCar';
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import React from 'react';
-import styled from '@emotion/styled';
+import { makeStyles } from '@material-ui/styles';
 
 const NavBar = () => {
-  const NavButton = styled(Button)({
-    backgroundColor: 'orange',
-    color: '#666',
-    padding: '3px',
-    margin: '10px',
-    '&:hover': {
-      backgroundColor: 'red',
-      color: 'white',
+  //   const NavButton = styled(Button)({
+  //     backgroundColor: 'orange',
+  //     color: '#666',
+  //     padding: '3px',
+  //     margin: '10px',
+  //     '&:hover': {
+  //       backgroundColor: 'red',
+  //       color: 'white',
+  //     },
+  //   });
+
+  const createStyles = makeStyles({
+    root: {
+      backgroundColor: 'orange',
+      color: '#666',
+      padding: '3px',
+      margin: '10px',
+      '&:hover': {
+        backgroundColor: 'red',
+        color: 'white',
+      },
     },
   });
 
-  const StyledToolbar = styled(Toolbar)({
-    display: 'flex',
-    justifyContent: 'space-between',
+  function ButtonStyled() {
+    const classes = createStyles();
+    return <Button className={classes.root}></Button>;
+  }
+
+  // const StyledToolbar = styled(Toolbar)({
+  //   display: 'flex',
+  //   justifyContent: 'space-between',
+  // });
+
+  const useStyles = makeStyles({
+    root: {
+      display: 'flex',
+      justifyContent: 'space-between',
+    },
   });
+
+  function ToolbarStyled() {
+    const classes = useStyles();
+    return <Toolbar className={classes.root}></Toolbar>;
+  }
 
   return (
     <AppBar>
-      <StyledToolbar>
+      <ToolbarStyled>
         <div>
           <IconButton
             size="large"
@@ -36,16 +66,16 @@ const NavBar = () => {
             color="inherit"
             aria-label="logo"
           >
-            <ElectricCarIcon />
+            <DriveEtaIcon />
           </IconButton>
           <Typography variant="h6">Car Chargers</Typography>
         </div>
         <div>
-          <NavButton sx={{ ml: 'auto' }} variant="outlined">
+          <ButtonStyled sx={{ ml: 'auto' }} variant="outlined">
             Home
-          </NavButton>
-          <NavButton variant="outlined">About Us</NavButton>
-          <NavButton variant="outlined">Car Chargers</NavButton>
+          </ButtonStyled>
+          <ButtonStyled variant="outlined">About Us</ButtonStyled>
+          <ButtonStyled variant="outlined">Car Chargers</ButtonStyled>
           <Button
             variant="contained"
             sx={{
@@ -56,7 +86,7 @@ const NavBar = () => {
             Buy Now
           </Button>
         </div>
-      </StyledToolbar>
+      </ToolbarStyled>
     </AppBar>
   );
 };
