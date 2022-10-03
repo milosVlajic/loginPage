@@ -22,15 +22,13 @@ const LoginPage = () => {
   const [checked, setChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
 
   const emailChangeHandler = e => {
     setEmail(e.target.value);
-    console.log(email);
   };
   const passwordChangeHandler = e => {
     setPassword(e.target.value);
-    console.log(password);
   };
 
   const submitHandler = e => {

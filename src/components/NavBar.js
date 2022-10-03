@@ -9,59 +9,31 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 
+const useStyles = makeStyles({
+  btn: {
+    backgroundColor: 'orange',
+    color: '#666',
+    padding: '3px',
+    margin: '10px',
+    '&:hover': {
+      backgroundColor: 'red',
+      color: 'white',
+    },
+  },
+  tool: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+});
+
 const NavBar = () => {
-  //   const NavButton = styled(Button)({
-  //     backgroundColor: 'orange',
-  //     color: '#666',
-  //     padding: '3px',
-  //     margin: '10px',
-  //     '&:hover': {
-  //       backgroundColor: 'red',
-  //       color: 'white',
-  //     },
-  //   });
-
-  const createStyles = makeStyles({
-    root: {
-      backgroundColor: 'orange',
-      color: '#666',
-      padding: '3px',
-      margin: '10px',
-      '&:hover': {
-        backgroundColor: 'red',
-        color: 'white',
-      },
-    },
-  });
-
-  function ButtonStyled() {
-    const classes = createStyles();
-    return <Button className={classes.root}></Button>;
-  }
-
-  // const StyledToolbar = styled(Toolbar)({
-  //   display: 'flex',
-  //   justifyContent: 'space-between',
-  // });
-
-  const useStyles = makeStyles({
-    root: {
-      display: 'flex',
-      justifyContent: 'space-between',
-    },
-  });
-
-  function ToolbarStyled() {
-    const classes = useStyles();
-    return <Toolbar className={classes.root}></Toolbar>;
-  }
-
+  const classes = useStyles();
   return (
     <AppBar>
-      <ToolbarStyled>
+      <Toolbar className={classes.tool}>
         <div>
           <IconButton
-            size="large"
+            size="medium"
             edge="start"
             color="inherit"
             aria-label="logo"
@@ -71,11 +43,19 @@ const NavBar = () => {
           <Typography variant="h6">Car Chargers</Typography>
         </div>
         <div>
-          <ButtonStyled sx={{ ml: 'auto' }} variant="outlined">
+          <Button
+            className={classes.btn}
+            sx={{ ml: 'auto' }}
+            variant="outlined"
+          >
             Home
-          </ButtonStyled>
-          <ButtonStyled variant="outlined">About Us</ButtonStyled>
-          <ButtonStyled variant="outlined">Car Chargers</ButtonStyled>
+          </Button>
+          <Button className={classes.btn} variant="outlined">
+            About Us
+          </Button>
+          <Button className={classes.btn} variant="outlined">
+            Car Chargers
+          </Button>
           <Button
             variant="contained"
             sx={{
@@ -86,7 +66,7 @@ const NavBar = () => {
             Buy Now
           </Button>
         </div>
-      </ToolbarStyled>
+      </Toolbar>
     </AppBar>
   );
 };

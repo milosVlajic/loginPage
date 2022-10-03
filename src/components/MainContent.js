@@ -3,33 +3,23 @@ import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 import MyCard from './MyCard';
 
-// const StyledToolbar = styled(Toolbar)({
-//   display: 'flex',
-//   justifyContent: 'space-between',
-//   gap: '20px',
-// });
-
 const useStyles = makeStyles({
-  root: {
+  tool: {
     display: 'flex',
     justifyContent: 'space-between',
     gap: '20px',
   },
 });
 
-function ToolbarStyled() {
-  const classes = useStyles();
-  return <Toolbar className={classes.root}></Toolbar>;
-}
-
 const MainContent = () => {
+  const classes = useStyles();
   return (
     <>
-      <ToolbarStyled>
+      <Toolbar className={classes.tool}>
         <MyCard />
         <MyCard />
         <MyCard />
-      </ToolbarStyled>
+      </Toolbar>
     </>
   );
 };

@@ -9,24 +9,27 @@ import Button from '@material-ui/core/Button';
 // });
 
 const useStyles = makeStyles({
-  root: {
+  btn: {
     padding: '10px, 5px',
     margin: '20px ',
   },
 });
 
-function ButtonStyled() {
-  const classes = useStyles();
-  return <Button className={classes.root}></Button>;
-}
-
 const OrderButton = () => {
+  const classes = useStyles();
+
   return (
     <div>
-      <ButtonStyled variant="text">Learn More</ButtonStyled>
-      <ButtonStyled variant="contained" style={{ backgroundColor: 'red' }}>
+      <Button className={classes.btn} variant="text">
+        Learn More
+      </Button>
+      <Button
+        className={classes.btn}
+        variant="contained"
+        style={{ backgroundColor: 'red' }}
+      >
         BUY NOW
-      </ButtonStyled>
+      </Button>
     </div>
   );
 };
