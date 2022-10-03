@@ -7,10 +7,9 @@ import {
   CardMedia,
   IconButton,
   Typography,
-} from '@mui/material';
-import { Stack } from '@mui/system';
+} from '@material-ui/core';
 import React from 'react';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreVertIcon from '@material-ui/icons/MoreVert';
 import carImage from '../image/car.jpg';
 
 const MyCard = () => {

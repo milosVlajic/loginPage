@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Card from '@mui/material/Card';
-import LockPersonIcon from '@mui/icons-material/LockPerson';
-import '@fontsource/roboto/400.css';
+
+import LockPersonIcon from '@material-ui/icons/LockPerson';
+
 import {
   Link,
   Avatar,
@@ -11,10 +11,10 @@ import {
   FormControlLabel,
   FormGroup,
   Typography,
-} from '@mui/material';
-import TextField from '@mui/material/TextField';
-import { border } from '@mui/system';
-import SaveIcon from '@mui/icons-material/Save';
+  TextField,
+} from '@material-ui/core';
+import { border } from '@material-ui/core';
+import SaveIcon from '@material-ui/icons/Save';
 import HomePage from './HomePage';
 
 const LoginPage = () => {

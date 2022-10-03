@@ -1,11 +1,19 @@
 import styled from '@emotion/styled';
-import { Style } from '@mui/icons-material';
-import { Button } from '@mui/material';
+import { Style } from '@material-ui/icons/';
+
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
 const StyledButton = styled(Button)({
   padding: '10px, 5px',
   margin: '20px ',
+});
+
+const useStyles = makeStyles({
+  root: {
+    padding: '10px, 5px',
+    margin: '20px ',
+  },
 });
 
 const OrderButton = () => {
