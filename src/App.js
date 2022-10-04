@@ -18,14 +18,20 @@ function App() {
       <header className="App-header">
         <Switch>
           <Route path="/" exact>
-            <Redirect to="/login"></Redirect>
+            {!login && <Redirect to="/homepage" />}
           </Route>
 
           <Route path="/login">
-            {/* {!login ? <LoginPage onLogin={loginHandler} /> : <HomePage />} */}
-            {!login && <LoginPage onLogin={loginHandler} />}
+            <LoginPage onLogin={loginHandler} />
+            {login && <Redirect to="/homepage" />}
           </Route>
-          <Route path="/homepage">{login && <HomePage />}</Route>
+
+          <Route path="/homepage">
+            {/* {login && <HomePage />}
+            {!login && <Redirect to="/login" />} */}
+
+            {login ? <HomePage /> : <Redirect to="/login" />}
+          </Route>
         </Switch>
       </header>
     </div>
