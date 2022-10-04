@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import LoginPage from './components/LoginPage';
-import { Route } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import HomePage from './components/HomePage';
 
@@ -16,7 +16,17 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {!login ? <LoginPage onLogin={loginHandler} /> : <HomePage />}
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/login"></Redirect>
+          </Route>
+
+          <Route path="/login">
+            {/* {!login ? <LoginPage onLogin={loginHandler} /> : <HomePage />} */}
+            {!login && <LoginPage onLogin={loginHandler} />}
+          </Route>
+          <Route path="/homepage">{login && <HomePage />}</Route>
+        </Switch>
       </header>
     </div>
   );
