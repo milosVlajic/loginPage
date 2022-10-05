@@ -10,7 +10,6 @@ function App() {
 
   const loginHandler = bla => {
     setLogin(true);
-    console.log(login);
   };
 
   return (
@@ -18,19 +17,12 @@ function App() {
       <header className="App-header">
         <Switch>
           <Route path="/" exact>
-            {!login && <Redirect to="/homepage" />}
+            {login ? <HomePage /> : <Redirect to="/login" />}
           </Route>
 
           <Route path="/login">
             <LoginPage onLogin={loginHandler} />
-            {login && <Redirect to="/homepage" />}
-          </Route>
-
-          <Route path="/homepage">
-            {/* {login && <HomePage />}
-            {!login && <Redirect to="/login" />} */}
-
-            {login ? <HomePage /> : <Redirect to="/login" />}
+            {login && <Redirect to="/" />}
           </Route>
         </Switch>
       </header>
