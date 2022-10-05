@@ -4,12 +4,14 @@ import LoginPage from './components/LoginPage';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import HomePage from './components/HomePage';
+import NotFound from './components/NotFound';
 
 function App() {
   const [login, setLogin] = useState(false);
 
   const loginHandler = bla => {
     setLogin(true);
+    console.log(login);
   };
 
   return (
@@ -23,6 +25,10 @@ function App() {
           <Route path="/login">
             <LoginPage onLogin={loginHandler} />
             {login && <Redirect to="/" />}
+          </Route>
+
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </header>

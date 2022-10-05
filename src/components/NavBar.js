@@ -8,6 +8,7 @@ import {
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   btn: {
@@ -56,15 +57,17 @@ const NavBar = () => {
           <Button className={classes.btn} variant="outlined">
             Car Chargers
           </Button>
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: 'red',
-              color: 'white',
-            }}
-          >
-            Buy Now
-          </Button>
+          <Link to="/login">
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: 'red',
+                color: 'white',
+              }}
+            >
+              LOGOUT
+            </Button>
+          </Link>
         </div>
       </Toolbar>
     </AppBar>
