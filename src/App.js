@@ -9,22 +9,20 @@ import NotFound from './components/NotFound';
 function App() {
   const [login, setLogin] = useState(false);
 
-  const loginHandler = bla => {
+  const loginHandler = () => {
     setLogin(true);
-    console.log(login);
   };
 
   return (
     <div className="App">
       <header className="App-header">
         <Switch>
-          <Route path="/" exact>
-            {login ? <HomePage /> : <Redirect to="/login" />}
+          <Route path="/login">
+            <LoginPage onLogin={loginHandler} login={login} />
           </Route>
 
-          <Route path="/login">
-            <LoginPage onLogin={loginHandler} />
-            {login && <Redirect to="/" />}
+          <Route path="/" exact>
+            <HomePage login={login} />
           </Route>
 
           <Route path="*">

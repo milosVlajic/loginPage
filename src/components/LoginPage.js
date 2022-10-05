@@ -18,11 +18,15 @@ import { border } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import HomePage from './HomePage';
 
+import { useHistory } from 'react-router-dom';
+
 const LoginPage = props => {
   const [checked, setChecked] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // const [login, setLogin] = useState(false);
+
+  const history = useHistory();
 
   const emailChangeHandler = e => {
     setEmail(e.target.value);
@@ -35,6 +39,7 @@ const LoginPage = props => {
     e.preventDefault();
     if (email && password) {
       props.onLogin();
+      history.push('/');
     }
   };
 
