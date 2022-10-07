@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import LoginPage from './components/LoginPage';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
