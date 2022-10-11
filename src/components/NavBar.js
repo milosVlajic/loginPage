@@ -8,7 +8,7 @@ import {
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
   btn: {
@@ -28,6 +28,12 @@ const useStyles = makeStyles({
 });
 
 const NavBar = () => {
+  const history = useHistory();
+
+  const logoutHandler = () => {
+    history.push('/login');
+  };
+
   const classes = useStyles();
   return (
     <AppBar>
@@ -57,17 +63,17 @@ const NavBar = () => {
           <Button className={classes.btn} variant="outlined">
             Car Chargers
           </Button>
-          <Link to="/login">
-            <Button
-              variant="contained"
-              sx={{
-                backgroundColor: 'red',
-                color: 'white',
-              }}
-            >
-              LOGOUT
-            </Button>
-          </Link>
+
+          <Button
+            onClick={logoutHandler}
+            variant="contained"
+            sx={{
+              backgroundColor: 'red',
+              color: 'white',
+            }}
+          >
+            LOGOUT
+          </Button>
         </div>
       </Toolbar>
     </AppBar>
