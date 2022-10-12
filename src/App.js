@@ -5,6 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import { useState } from 'react';
 import HomePage from './components/HomePage';
 import NotFound from './components/NotFound';
+import CarCharger from './page/CarCharger';
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -23,6 +24,10 @@ function App() {
 
           <Route path="/" exact>
             <HomePage login={login} />
+          </Route>
+
+          <Route path="/carcharger">
+            <CarCharger />
           </Route>
 
           <Route path="*">

@@ -34,6 +34,10 @@ const NavBar = () => {
     history.push('/login');
   };
 
+  const carChargerHandler = () => {
+    history.push('/carcharger');
+  };
+
   const classes = useStyles();
   return (
     <AppBar>
@@ -60,7 +64,11 @@ const NavBar = () => {
           <Button className={classes.btn} variant="outlined">
             About Us
           </Button>
-          <Button className={classes.btn} variant="outlined">
+          <Button
+            onClick={carChargerHandler}
+            className={classes.btn}
+            variant="outlined"
+          >
             Car Chargers
           </Button>
 
