@@ -5,16 +5,25 @@ import {
   Checkbox,
   FormControlLabel,
   TextField,
+  Typography,
+  Container,
+  Paper,
+  Grid,
+  AppBar,
+  Toolbar,
+  IconButton,
 } from '@material-ui/core';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
+import MenuIcon from '@material-ui/icons/Menu';
+import '@fontsource/roboto';
 
 import {
   makeStyles,
   ThemeProvider,
   createTheme,
 } from '@material-ui/core/styles';
-import { green } from '@material-ui/core/colors';
+import { green, orange } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
@@ -28,9 +37,17 @@ const useStyles = makeStyles({
 });
 
 const theme = createTheme({
+  typography: {
+    h2: {
+      fontSize: 18,
+    },
+  },
   palette: {
     primary: {
-      main: green[500],
+      main: green[400],
+    },
+    secondary: {
+      main: orange[400],
     },
   },
 });
@@ -64,22 +81,53 @@ const CheckboxExample = () => {
 const CarCharger = () => {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App-header">
-        <ButtonStyled />
-        <TextField
-          variant="filled"
-          color="secondary"
-          type="email"
-          label="The time"
-          placeholder="test@test.com"
-        />
-        <CheckboxExample />
-        <ButtonGroup variant="contained" color="primary">
-          <Button startIcon={<SaveIcon />}>Save</Button>
+      <Container maxWidth="xs">
+        <div className="App-header">
+          <AppBar color="secondary">
+            <Toolbar>
+              <IconButton>
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6">MUI Theming</Typography>
+              <Button>Login</Button>
+            </Toolbar>
+          </AppBar>
+          <Typography variant="h3" color="secondary">
+            Welcome to MUI
+          </Typography>
 
-          <Button startIcon={<DeleteIcon />}>Discard</Button>
-        </ButtonGroup>
-      </div>
+          <Typography variant="subtitle1" color="secondary">
+            Learn how to use Material Ui
+          </Typography>
+          <ButtonStyled />
+          <Grid container spacing={2} justify="center">
+            <Grid item xs={3} sm={6}>
+              <Paper style={{ height: 75, width: '100%' }} />
+            </Grid>
+
+            <Grid item xs={3} sm={6}>
+              <Paper style={{ height: 75, width: '100%' }} />
+            </Grid>
+
+            <Grid item xs={3} sm={6}>
+              <Paper style={{ height: 75, width: '100%' }} />
+            </Grid>
+          </Grid>
+          <TextField
+            variant="filled"
+            color="secondary"
+            type="email"
+            label="The time"
+            placeholder="test@test.com"
+          />
+          <CheckboxExample />
+          <ButtonGroup variant="contained" color="primary">
+            <Button startIcon={<SaveIcon />}>Save</Button>
+
+            <Button startIcon={<DeleteIcon />}>Discard</Button>
+          </ButtonGroup>
+        </div>
+      </Container>
     </ThemeProvider>
   );
 };
