@@ -12,6 +12,8 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
+let tableArray = [];
+
 const AboutUs = () => {
   const [table, setTable] = useState([]);
   const [rows, setRows] = useState([]);
@@ -44,8 +46,12 @@ const AboutUs = () => {
 
         const tableObject = data.headers;
         for (const property in tableObject) {
+          tableArray.push(
+            createData(`${property}`, `${tableObject[property]}`)
+          );
+          console.log(tableArray);
           // console.log(`${property} : ${tableObject[property]}`);
-          setRows(createData(`${property}`, `${tableObject[property]}`));
+          setRows(tableArray);
         }
       });
   }
@@ -66,14 +72,14 @@ const AboutUs = () => {
             </TableRow>
           </TableHead>
 
-          {/* <TableBody>
+          <TableBody>
             {rows.map(row => (
               <TableRow key={row.name}>
                 <TableCell align="right">{row.name}</TableCell>
                 <TableCell align="right">{row.value}</TableCell>
               </TableRow>
             ))}
-          </TableBody> */}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>
