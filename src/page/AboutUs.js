@@ -12,8 +12,6 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-let tableArray = [];
-
 const AboutUs = () => {
   const [table, setTable] = useState([]);
   const [rows, setRows] = useState([]);
@@ -44,6 +42,7 @@ const AboutUs = () => {
       .then(data => {
         setTable(data.headers);
 
+        let tableArray = [];
         const tableObject = data.headers;
         for (const property in tableObject) {
           tableArray.push(
@@ -51,8 +50,8 @@ const AboutUs = () => {
           );
           console.log(tableArray);
           // console.log(`${property} : ${tableObject[property]}`);
-          setRows(tableArray);
         }
+        setRows(tableArray);
       });
   }
 
