@@ -9,12 +9,15 @@ import {
   TableHead,
   TableRow,
   Paper,
+  CircularProgress,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
 const AboutUs = () => {
   const [table, setTable] = useState([]);
   const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [tableData, setTableData] = useState(false);
 
   // const rows = [
   //   { name: 1, value: 3 },
@@ -35,6 +38,7 @@ const AboutUs = () => {
   ];
 
   function fetchTableHandler() {
+    setLoading(true);
     fetch('https://httpbin.org/get')
       .then(response => {
         return response.json();
@@ -52,6 +56,8 @@ const AboutUs = () => {
           // console.log(`${property} : ${tableObject[property]}`);
         }
         setRows(tableArray);
+        setLoading(false);
+        setTableData(true);
       });
   }
 
@@ -62,25 +68,31 @@ const AboutUs = () => {
       <Button color="primary" variant="outlined" onClick={fetchDataHandler}>
         Fetch Table Data
       </Button>
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell>Value</TableCell>
-            </TableRow>
-          </TableHead>
+      {loading && <CircularProgress color="secondary" />}
 
-          <TableBody>
-            {rows.map(row => (
-              <TableRow key={row.name}>
-                <TableCell align="right">{row.name}</TableCell>
-                <TableCell align="right">{row.value}</TableCell>
+      {tableData || <p>No items found</p>}
+
+      {tableData && (
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell>
+                <TableCell>Value</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+
+            <TableBody>
+              {rows.map(row => (
+                <TableRow key={row.name}>
+                  <TableCell align="right">{row.name}</TableCell>
+                  <TableCell align="right">{row.value}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </div>
   );
 };
