@@ -17,10 +17,9 @@ const AboutUs = () => {
       .then(data => {
         setTable(data.headers);
 
-        let tableData = '';
-        for (let x in data.headers) {
-          tableData += data.headers[x] + '';
-          console.log(tableData);
+        const tableObject = data.headers;
+        for (const property in tableObject) {
+          console.log(`${property} : ${tableObject[property]}`);
         }
       });
   }
