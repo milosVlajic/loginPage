@@ -16,6 +16,11 @@ const AboutUs = () => {
   const [table, setTable] = useState([]);
   const [rows, setRows] = useState([]);
 
+  // const rows = [
+  //   { name: 1, value: 3 },
+  //   { name: 2, value: 4 },
+  // ];
+
   const fetchDataHandler = () => {
     fetchTableHandler();
   };
@@ -25,7 +30,7 @@ const AboutUs = () => {
   };
 
   const columns = [
-    { filed: 'name', headerName: 'Name' },
+    { field: 'name', headerName: 'Name' },
     { field: 'value', headerName: 'Value' },
   ];
 
@@ -39,8 +44,7 @@ const AboutUs = () => {
 
         const tableObject = data.headers;
         for (const property in tableObject) {
-          console.log(`${property} : ${tableObject[property]}`);
-          // rows.push[`${property}, ${tableObject[property]}`];
+          // console.log(`${property} : ${tableObject[property]}`);
           setRows(createData(`${property}`, `${tableObject[property]}`));
         }
       });
@@ -62,14 +66,14 @@ const AboutUs = () => {
             </TableRow>
           </TableHead>
 
-          <TableBody>
+          {/* <TableBody>
             {rows.map(row => (
               <TableRow key={row.name}>
                 <TableCell align="right">{row.name}</TableCell>
                 <TableCell align="right">{row.value}</TableCell>
               </TableRow>
             ))}
-          </TableBody>
+          </TableBody> */}
         </Table>
       </TableContainer>
     </div>
