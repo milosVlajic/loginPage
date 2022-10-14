@@ -14,17 +14,20 @@ import { makeStyles } from '@material-ui/styles';
 
 const AboutUs = () => {
   const [table, setTable] = useState([]);
+  const [rows, setRows] = useState([]);
 
   const fetchDataHandler = () => {
     fetchTableHandler();
+  };
+
+  const createData = (name, value) => {
+    return { name, value };
   };
 
   const columns = [
     { filed: 'name', headerName: 'Name' },
     { field: 'value', headerName: 'Value' },
   ];
-
-  let rows = [];
 
   function fetchTableHandler() {
     fetch('https://httpbin.org/get')
@@ -37,10 +40,12 @@ const AboutUs = () => {
         const tableObject = data.headers;
         for (const property in tableObject) {
           console.log(`${property} : ${tableObject[property]}`);
-          rows = [`${property}, ${tableObject[property]}`];
+          // rows.push[`${property}, ${tableObject[property]}`];
+          setRows(createData(`${property}`, `${tableObject[property]}`));
         }
       });
   }
+
   console.log(rows);
 
   return (
@@ -56,6 +61,15 @@ const AboutUs = () => {
               <TableCell>Value</TableCell>
             </TableRow>
           </TableHead>
+
+          <TableBody>
+            {rows.map(row => (
+              <TableRow key={row.name}>
+                <TableCell align="right">{row.name}</TableCell>
+                <TableCell align="right">{row.value}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
         </Table>
       </TableContainer>
     </div>
