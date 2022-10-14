@@ -6,32 +6,24 @@ const AboutUs = () => {
   const [table, setTable] = useState([]);
 
   const fetchDataHandler = () => {
-    getdata();
+    fetchTableHandler();
   };
 
-  const getdata = async () => {
-    const url = 'https://httpbin.org/get';
+  function fetchTableHandler() {
+    fetch('https://httpbin.org/get')
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        setTable(data.headers);
 
-    const response = await fetch(url);
-    const { headers } = await response.json();
-    console.log(headers);
-
-    headers.map(headers => {
-      console.log(headers);
-    });
-  };
-
-  //   function fetchTableHandler() {
-
-  //     fetch('https://httpbin.org/get')
-  //       .then(response => {
-  //         return response.json();
-  //       })
-  //       .then(data => {
-  //         setTable(data.headers);
-  //         console.log(data.headers);
-  //       });
-  //   }
+        let tableData = '';
+        for (let x in data.headers) {
+          tableData += data.headers[x] + '';
+          console.log(tableData);
+        }
+      });
+  }
 
   return (
     <div>
