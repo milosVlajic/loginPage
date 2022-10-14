@@ -65,9 +65,11 @@ const AboutUs = () => {
 
   return (
     <div>
-      <Button color="primary" variant="outlined" onClick={fetchDataHandler}>
-        Fetch Table Data
-      </Button>
+      {tableData || (
+        <Button color="primary" variant="outlined" onClick={fetchDataHandler}>
+          Fetch Table Data
+        </Button>
+      )}
       {loading && <CircularProgress color="secondary" />}
 
       {tableData || <p>No items found</p>}
