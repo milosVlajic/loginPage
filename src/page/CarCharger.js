@@ -24,6 +24,7 @@ import {
   createTheme,
 } from '@material-ui/core/styles';
 import { green, orange } from '@material-ui/core/colors';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles({
   root: {
@@ -127,6 +128,7 @@ const CarCharger = () => {
             <Button startIcon={<DeleteIcon />}>Discard</Button>
           </ButtonGroup>
         </div>
+        <Footer />
       </Container>
     </ThemeProvider>
   );

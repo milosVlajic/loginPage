@@ -5,11 +5,12 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   footer: {
-    background: 'secondary',
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
     width: '100%',
-    marginBottom: 4,
-    color: 'black',
-    padding: '6px 30px',
+    backgroundColor: 'green',
+    textAlign: 'left',
   },
 });
 
@@ -20,12 +21,12 @@ console.log(fullYear);
 const Footer = () => {
   const classes = useStyles();
   return (
-    <Container className={classes.footer}>
+    <footer className={classes.footer}>
       <Typography>
         <span>&copy;</span>
         {` ${fullYear} Car Charger All Rights Reserved`}
       </Typography>
-    </Container>
+    </footer>
   );
 };
 

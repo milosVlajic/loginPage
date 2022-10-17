@@ -12,6 +12,7 @@ import {
   CircularProgress,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import Footer from '../components/Footer';
 
 const AboutUs = () => {
   const [table, setTable] = useState([]);
@@ -95,6 +96,7 @@ const AboutUs = () => {
           </Table>
         </TableContainer>
       )}
+      <Footer />
     </div>
   );
 };
