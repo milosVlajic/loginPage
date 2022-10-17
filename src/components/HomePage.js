@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import Footer from './Footer';
 import MainContent from './MainContent';
 import NavBar from './NavBar';
 import OrderButton from './OrderButton';
@@ -15,6 +16,7 @@ const HomePage = props => {
       <NavBar />
       <MainContent />
       <OrderButton />
+      <Footer />
     </>
   );
 };
