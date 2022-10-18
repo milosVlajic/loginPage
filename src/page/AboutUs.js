@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Table,
@@ -14,13 +14,13 @@ import {
 import { makeStyles } from '@material-ui/styles';
 import Footer from '../components/Footer';
 
+const fetchTableData = () => {
+  return fetch('https://httpbin.org/get').then(response => response.json());
+};
+
 const AboutUs = () => {
   const [table, setTable] = useState([]);
   const [rows, setRows] = useState([]);
-
-  const fetchTableData = () => {
-    return fetch('https://httpbin.org/get').then(response => response.json());
-  };
 
   const createData = (name, value) => {
     return { name, value };
@@ -37,7 +37,7 @@ const AboutUs = () => {
     return <span>Loading...</span>;
   }
 
-  console.log(data.headers);
+  // console.log(data.headers);
 
   let tableArray = [];
   const tableObject = data.headers;
@@ -47,6 +47,8 @@ const AboutUs = () => {
     // console.log(`${property} : ${tableObject[property]}`);
   }
   setRows(tableArray);
+
+  console.log(tableArray);
 
   return <div>About Us</div>;
 };
