@@ -33,24 +33,51 @@ const AboutUs = () => {
 
   const { isLoading, data } = useQuery('table-data', fetchTableData);
 
+  let tableArray;
+
+  useEffect(() => {
+    tableArray = [];
+    const tableObject = data.headers;
+    for (const property in tableObject) {
+      tableArray.push(createData(`${property}`, `${tableObject[property]}`));
+      console.log(tableArray);
+
+      // console.log(`${property} : ${tableObject[property]}`);
+    }
+    setRows(tableArray);
+  }, []);
+
   if (isLoading) {
     return <span>Loading...</span>;
   }
 
   // console.log(data.headers);
 
-  let tableArray = [];
-  const tableObject = data.headers;
-  for (const property in tableObject) {
-    tableArray.push(createData(`${property}`, `${tableObject[property]}`));
-    console.log(tableArray);
-    // console.log(`${property} : ${tableObject[property]}`);
-  }
-  setRows(tableArray);
-
   console.log(tableArray);
 
-  return <div>About Us</div>;
+  return (
+    <>
+      <TableContainer component={Paper}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Name</TableCell>
+              <TableCell>Value</TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {rows.map(row => (
+              <TableRow key={row.name}>
+                <TableCell align="right">{row.name}</TableCell>
+                <TableCell align="right">{row.value}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
+  );
 };
 export default AboutUs;
 
