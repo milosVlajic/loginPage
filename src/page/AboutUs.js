@@ -31,32 +31,32 @@ const AboutUs = () => {
     { field: 'value', headerName: 'Value' },
   ];
 
-  const { isLoading, data } = useQuery('table-data', fetchTableData);
-
-  let tableArray;
-
-  useEffect(() => {
-    tableArray = [];
-    const tableObject = data.headers;
-    for (const property in tableObject) {
-      tableArray.push(createData(`${property}`, `${tableObject[property]}`));
-      console.log(tableArray);
-
-      // console.log(`${property} : ${tableObject[property]}`);
-    }
-    setRows(tableArray);
-  }, []);
+  const { isLoading, data } = useQuery('table-data', fetchTableData, {
+    onSuccess: data => {
+      let tableArray = [];
+      const tableObject = data.headers;
+      for (const property in tableObject) {
+        tableArray.push(createData(`${property}`, `${tableObject[property]}`));
+        console.log(tableArray);
+        // console.log(`${property} : ${tableObject[property]}`);
+      }
+      setRows(tableArray);
+    },
+  });
 
   if (isLoading) {
-    return <span>Loading...</span>;
+    return <CircularProgress color="secondary" />;
   }
 
-  // console.log(data.headers);
-
-  console.log(tableArray);
+  if (!data) {
+    <p>No items found</p>;
+  }
 
   return (
     <>
+      {/* <Button color="primary" variant="outlined" onClick={fetchTableData}>
+        Fetch Table Data
+      </Button> */}
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
