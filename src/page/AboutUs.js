@@ -22,6 +22,10 @@ const AboutUs = () => {
   const [table, setTable] = useState([]);
   const [rows, setRows] = useState([]);
 
+  const handleClick = () => {
+    refetch();
+  };
+
   const createData = (name, value) => {
     return { name, value };
   };
@@ -31,18 +35,25 @@ const AboutUs = () => {
     { field: 'value', headerName: 'Value' },
   ];
 
-  const { isLoading, data } = useQuery('table-data', fetchTableData, {
-    onSuccess: data => {
-      let tableArray = [];
-      const tableObject = data.headers;
-      for (const property in tableObject) {
-        tableArray.push(createData(`${property}`, `${tableObject[property]}`));
-        console.log(tableArray);
-        // console.log(`${property} : ${tableObject[property]}`);
-      }
-      setRows(tableArray);
-    },
-  });
+  const { isLoading, data, refetch, isError } = useQuery(
+    'table-data',
+    fetchTableData,
+    { enabled: false },
+    {
+      onSuccess: data => {
+        let tableArray = [];
+        const tableObject = data.headers;
+        for (const property in tableObject) {
+          tableArray.push(
+            createData(`${property}`, `${tableObject[property]}`)
+          );
+          console.log(tableArray);
+          // console.log(`${property} : ${tableObject[property]}`);
+        }
+        setRows(tableArray);
+      },
+    }
+  );
 
   if (isLoading) {
     return <CircularProgress color="secondary" />;
@@ -52,11 +63,15 @@ const AboutUs = () => {
     <p>No items found</p>;
   }
 
+  // if (isError) {
+  //   return <h2>{error.message}</h2>;
+  // }
+
   return (
     <>
-      {/* <Button color="primary" variant="outlined" onClick={fetchTableData}>
+      <Button color="primary" variant="outlined" onClick={handleClick}>
         Fetch Table Data
-      </Button> */}
+      </Button>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
           <TableHead>
